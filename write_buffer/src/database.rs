@@ -6,7 +6,7 @@ use query::group_by::WindowDuration;
 use query::{
     exec::{stringset::StringSet, FieldListPlan, SeriesSetPlan, SeriesSetPlans, StringSetPlan},
     predicate::Predicate,
-    Database,
+    TSDatabase,
 };
 use wal::{
     writer::{start_wal_sync_task, Error as WalWriterError, WalDetails},
@@ -342,7 +342,7 @@ impl Db {
 }
 
 #[async_trait]
-impl Database for Db {
+impl TSDatabase for Db {
     type Error = Error;
 
     // TODO: writes lines creates a column named "time" for the timestamp data. If
@@ -1152,7 +1152,7 @@ mod tests {
             Executor,
         },
         predicate::PredicateBuilder,
-        Database,
+        TSDatabase,
     };
 
     use arrow::{

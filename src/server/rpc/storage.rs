@@ -34,7 +34,7 @@ use query::{
     },
     org_and_bucket_to_database,
     predicate::PredicateBuilder,
-    Database, DatabaseStore,
+    DatabaseStore, TSDatabase,
 };
 
 use snafu::{OptionExt, ResultExt, Snafu};
