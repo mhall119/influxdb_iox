@@ -437,7 +437,7 @@ impl TSDatabase for Db {
     }
 
     /// return all field names in this database, while applying optional predicates
-    async fn field_columns(&self, predicate: Predicate) -> Result<FieldListPlan, Self::Error> {
+    async fn field_column_names(&self, predicate: Predicate) -> Result<FieldListPlan, Self::Error> {
         let mut filter = PartitionTableFilter::new(predicate);
         let mut visitor = TableFieldPredVisitor::new();
         self.visit_tables(&mut filter, &mut visitor).await?;
@@ -2109,7 +2109,7 @@ disk bytes=23432323i 1600136510000000000",
 
         // make sure table filtering works (no tables match)
         let plan = db
-            .field_columns(predicate)
+            .field_column_names(predicate)
             .await
             .expect("Created field_columns plan successfully");
 
@@ -2126,7 +2126,7 @@ disk bytes=23432323i 1600136510000000000",
             .build();
 
         let plan = db
-            .field_columns(predicate)
+            .field_column_names(predicate)
             .await
             .expect("Created field_columns plan successfully");
 
@@ -2191,7 +2191,7 @@ disk bytes=23432323i 1600136510000000000",
             .build();
 
         let plan = db
-            .field_columns(predicate)
+            .field_column_names(predicate)
             .await
             .expect("Created field_columns plan successfully");
 

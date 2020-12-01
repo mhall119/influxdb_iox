@@ -310,7 +310,7 @@ impl TSDatabase for TestDatabase {
         Ok(column_names.into())
     }
 
-    async fn field_columns(&self, predicate: Predicate) -> Result<FieldListPlan, Self::Error> {
+    async fn field_column_names(&self, predicate: Predicate) -> Result<FieldListPlan, Self::Error> {
         // save the request
         let predicate = predicate_to_test_string(&predicate);
 

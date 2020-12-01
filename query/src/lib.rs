@@ -71,7 +71,7 @@ pub trait TSDatabase: Debug + Send + Sync {
     /// database which store fields (as defined in the data written
     /// via `write_lines`), and which have at least one row which
     /// matches the conditions listed on `predicate`.
-    async fn field_columns(&self, predicate: Predicate) -> Result<FieldListPlan, Self::Error>;
+    async fn field_column_names(&self, predicate: Predicate) -> Result<FieldListPlan, Self::Error>;
 
     /// Returns a plan which finds the distinct values in the
     /// `column_name` column of this database which pass the
